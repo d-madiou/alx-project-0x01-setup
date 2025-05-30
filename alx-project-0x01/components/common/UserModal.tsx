@@ -1,7 +1,7 @@
 import { UserModalProps, UserData } from "@/interfaces";
 import { useState } from "react";
 
-const UserModal: React.FC<UserModalProps> = ({ isOpen, onClose, onAddUser }) => {
+const UserModal: React.FC<UserModalProps> = ({ isOpen, onClose, onAddUser, onSubmit }) => {
   const [form, setForm] = useState<Omit<UserData, 'id'>>({
     name: "",
     username: "",
@@ -41,6 +41,9 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onClose, onAddUser }) => 
     };
     onAddUser(newUser);
     onClose();
+    if (onSubmit) {
+      onSubmit(newUser);
+    }
   };
 
   if (!isOpen) return null;
