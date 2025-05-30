@@ -68,3 +68,8 @@ export interface UserData {
     bs: string;
   };
 }
+export interface UserModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onAddUser: (user: UserProps) => void;
+}
